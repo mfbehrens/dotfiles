@@ -1,16 +1,33 @@
 {
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["cpu", "clock", "memory"],
-  // "modules-right": ["network", "bluetooth", "pulseaudio", "battery", "tray"],
-  "modules-right": ["network", "bluetooth", "pulseaudio", "battery"],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "cpu",
+    "clock",
+    "memory"
+  ],
+  // "modules-right": [
+  //   "network",
+  //   "bluetooth",
+  //   "pulseaudio",
+  //   "battery",
+  //   "tray"
+  // ],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "battery"
+  ],
   "clock": {
     "format": "{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
     "states": {
-      "warning": 30,
+      "warning": 25,
       "critical": 15
     },
     "format": "{icon} {capacity}%",
@@ -20,34 +37,48 @@
     "format-plugged": " {capacity}%",
     "format-alt": "{icon} {time}",
     "format-full": " {capacity}%",
-    "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣"],
+    "format-icons": [
+      "󰂎",
+      "󱊡",
+      "󱊢",
+      "󱊣"
+    ],
     "tooltip-format": "{time}"
   },
   "network": {
     "interval": 5,
     "format-wifi": " {bandwidthUpBytes}   {bandwidthDownBytes}  ",
-    "format-ethernet": " {bandwidthUpBytes}   {bandwidthDownBytes} 󰈀 ",
+    "format-ethernet": " {bandwidthUpBytes}   {bandwidthDownBytes}  ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": " ",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-    "on-click": "ghostty -e nmtui",
+    "on-click": "ghostty -e nmtui"
   },
   "pulseaudio": {
-      "format": "{icon} {volume}%",
-      "format-muted": " ",
-      "format-icons": {
-          "default": [" ", " ", " "]
-      },
-      "on-click": "pavucontrol"
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
+    },
+    "on-click": "pavucontrol"
   },
   "bluetooth": {
     "format": "{status}",
-    "format-disconnected": "<span foreground='#999999'> 󰂯 </span>",
-    "format-off": "<span foreground='#999999'> 󰂲 </span>",
-    "format-on": "<span foreground='#999999'> 󰂯 </span>",
-    "format-connected": " 󰂯 ",
-    "format-connected-battery": " {icon}{device_battery_percentage}% ",
-    "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣"],
+    "format-disconnected": "󰂯",
+    "format-off": "󰂲",
+    "format-on": "󰂯",
+    "format-connected": "󰂯",
+    "format-connected-battery": " {icon}{device_battery_percentage}%",
+    "format-icons": [
+      "󰂎",
+      "󱊡",
+      "󱊢",
+      "󱊣"
+    ],
     "on-click": "ghostty -e bluetui"
   },
   "tray": {
@@ -62,5 +93,5 @@
   "cpu": {
     "format": "{usage}%  ",
     "on-click": "ghostty -e htop"
-  },
+  }
 }
