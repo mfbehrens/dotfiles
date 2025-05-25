@@ -12,6 +12,7 @@
   //   "network",
   //   "bluetooth",
   //   "pulseaudio",
+  // "backlight",
   //   "battery",
   //   "tray"
   // ],
@@ -19,6 +20,7 @@
     "network",
     "bluetooth",
     "pulseaudio",
+    "backlight",
     "battery"
   ],
   "clock": {
@@ -93,5 +95,9 @@
   "cpu": {
     "format": "{usage}%  ",
     "on-click": "ghostty -e htop"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% 󰃝 "
   }
 }
