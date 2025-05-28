@@ -52,7 +52,7 @@
     "format-wifi": " {bandwidthUpBytes}   {bandwidthDownBytes}  ",
     "format-ethernet": " {bandwidthUpBytes}   {bandwidthDownBytes}  ",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": " ",
+    "format-disconnected": "",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
     "on-click": "ghostty -e nmtui"
   },
