@@ -1,0 +1,139 @@
+# Sway config generated from Hyprland config
+
+### MONITORS ###
+# Output configuration
+output eDP-1 resolution 1920x1200 position 0 0
+# output 'AOC G2460PG' resolution 1920x1080@143.98Hz position -1920 0
+# output 'Acer Technologies V223PW LN80C0044013' resolution 1680x1050 position -3840 0
+# output 'Dell Inc. DELL U2724DE J734934' resolution 2560x1440@120Hz position 1920 0
+# output 'Seiko Epson Corporation EPSON PJ 0x01010101' resolution 1920x1080 position 4480 0
+# output * resolution 1920x1080
+
+### MY PROGRAMS ###
+set $terminal ghostty
+set $fileManager ghostty -e yazi
+set $menu fuzzel
+set $browser firefox
+set $mailProgram thunderbird
+
+set $autotiling pgrep autotiling || autotiling
+### AUTOSTART ###
+exec waybar
+exec swaync
+exec hypridle
+exec hyprpaper
+exec nm-applet --indicator
+exec kanshi
+
+exec_always $autotiling
+
+### ENVIRONMENT VARIABLES ###
+exec XCURSOR_SIZE=24
+exec HYPRCURSOR_SIZE=24
+exec XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
+
+### LOOK AND FEEL ###
+# Gaps and borders
+gaps inner 0
+gaps outer 0
+default_border pixel 2
+client.focused #f9e2af #f9e2af #f9e2af #f9e2af #f9e2af
+client.unfocused #4b4b4b #4b4b4b #4b4b4b #4b4b4b #4b4b4b
+
+# Window layout
+# workspace_layout 
+
+### INPUT ###
+input type:keyboard {
+    xkb_layout de
+}
+
+input type:touchpad {
+    natural_scroll enabled
+}
+
+input * {
+    pointer_accel 0
+}
+
+# Example per-device config
+input "epic-mouse-v1" {
+    pointer_accel -0.5
+}
+
+### KEYBINDINGS ###
+set $mod Mod4
+
+# Program launchers
+bindsym $mod+Return exec $terminal
+bindsym $mod+c kill
+bindsym $mod+Shift+e exit
+bindsym $mod+f exec $fileManager
+bindsym $mod+e exec $mailProgram
+bindsym $mod+v floating toggle
+bindsym $mod+space exec $menu
+bindsym $mod+b exec $browser
+bindsym $mod+p layout toggle split
+bindsym $mod+g fullscreen toggle
+bindsym $mod+Shift+l exec hyprlock
+
+bindsym $mod+Shift+r reload
+
+# Focus movement (vim keys)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Workspace switching
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Scratchpad
+bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s move scratchpad
+
+# Mouse bindings
+floating_modifier $mod
+
+# Volume and brightness
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+
+# Media keys
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+
+# Window rules
+for_window [class=".*"] inhibit_idle fullscreen
+
+# Lid Switch
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable

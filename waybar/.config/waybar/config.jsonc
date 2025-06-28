@@ -1,7 +1,8 @@
 {
   "position": "top",
   "modules-left": [
-    "hyprland/workspaces"
+    // "hyprland/workspaces"
+    "sway/workspaces"
   ],
   "modules-center": [
     "cpu",
