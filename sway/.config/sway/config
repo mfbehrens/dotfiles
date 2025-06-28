@@ -23,8 +23,9 @@ exec swaync
 exec hypridle
 exec hyprpaper
 exec nm-applet --indicator
-exec kanshi
+exec_always kanshi
 
+exec_always ./scripts/lid_switch.sh
 exec_always $autotiling
 
 ### ENVIRONMENT VARIABLES ###
